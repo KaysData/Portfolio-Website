@@ -3,8 +3,7 @@ version: '3.7'
 services:
     flaskapp:
         build: ./flaskapp-docker
-        ports:
-            - "8000:8000" #don't need this line because of the line below
+        container_name: flaskapp
         network_mode: host
         
 
