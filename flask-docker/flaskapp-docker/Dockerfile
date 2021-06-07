@@ -1,4 +1,4 @@
-FROM ubuntu:20.04.2
+FROM ubuntu:20.04
 
 RUN apt-get update -y
 RUN apt-get install python3-pip -y
