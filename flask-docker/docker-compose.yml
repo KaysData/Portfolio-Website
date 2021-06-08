@@ -4,6 +4,8 @@ services:
     flaskapp:
         build: ./flaskapp-docker
         container_name: flaskapp
+        networks:
+            - backend
 
     nginx:
         build: ./nginx
@@ -13,9 +15,11 @@ services:
         ports:
             - "80:80"
         restart: always
+        networks:
+            - backend
 
 networks:
-    default:
+    backend: 
         driver: bridge
 
 
