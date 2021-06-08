@@ -5,6 +5,16 @@ services:
         build: ./flaskapp-docker
         container_name: flaskapp
         network_mode: host
+
+    nginx:
+        build: ./nginx
+        container_name: ngninx
+        environment: 
+            - SERVER_NAME=0.0.0.0
+        restart: always
+        network_mode: host
+
+
         
 
         
