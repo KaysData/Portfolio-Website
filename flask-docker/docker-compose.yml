@@ -4,15 +4,21 @@ services:
     flaskapp:
         build: ./flaskapp-docker
         container_name: flaskapp
-        network_mode: host
 
     nginx:
         build: ./nginx
         container_name: ngninx
         environment: 
-            - SERVER_NAME=0.0.0.0
+            - SERVER_NAME=52.52.248.228
+        ports:
+            - "80:80"
         restart: always
-        network_mode: host
+
+networks:
+    default:
+        driver: bridge
+
+
 
 
         
