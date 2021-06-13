@@ -6,6 +6,12 @@ services:
         container_name: flaskapp
         networks:
             - backend
+    
+    flaskapp:
+        build: ./flaskapp-docker
+        container_name: wwwflaskapp
+        networks:
+            - backend
 
     nginx:
         build: ./nginx
