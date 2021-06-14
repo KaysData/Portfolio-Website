@@ -7,7 +7,7 @@ services:
         networks:
             - backend
         
-    flaskapp:
+    wwwflaskapp:
         build: ./flaskapp-docker
         container_name: wwwflaskapp
         networks:
@@ -18,10 +18,10 @@ services:
         container_name: ngninx
         environment: 
             - SERVER_NAME=52.52.248.228
-        volumes:
-            - ./data/nginx:etc/ngninx/conf.data
-            - ./data/certbot/conf:/etc/letsencrypt
-            - ./data/certbot/www:/var/www/certbot
+        #volumes:
+           # - ./data/nginx:etc/ngninx/conf.data #does not exist
+           # - ./data/certbot/conf:/etc/letsencrypt
+           # - ./data/certbot/www:/var/www/certbot #does not exist
         ports:
             - "80:80"
             - "443:443"
@@ -32,9 +32,9 @@ services:
     certbot:
         image: certbot/certbot
         restart: unless-stopped
-        volumes:
-            - ./data/certbot/conf:etc/letsencrypt
-            - ./data/certbot/www:/var/www/certbot
+        #volumes:
+            #- ./data/certbot/conf:etc/letsencrypt
+            #- ./data/certbot/www:/var/www/certbot #does not exist
         entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 networks:
